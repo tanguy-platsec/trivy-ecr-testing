@@ -1,0 +1,16 @@
+name: build and trivy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - 'master'
+
+jobs:
+  build-and-trivy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Trivy
+        uses: tanguy-platsec/trivy-action@use-aws-public-ecr
+        with:
+          image-ref: public.ecr.aws/aquasecurity/trivy:0.28.1
